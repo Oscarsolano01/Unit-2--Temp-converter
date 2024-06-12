@@ -1,77 +1,124 @@
-// Complete the following functions to make our program work!
+// === DO NOT EDIT THIS REGION ===
+// Read the comments to understand how the program is structured.
+
+// Prompt the user for a list of integers separated by commas.
+const userInputString = prompt(
+  "Please enter some integers separated by commas.",
+  "1,2,3,4,5"
+);
+
+// Split the string of numbers into an array of strings.
+const stringArray = userInputString.split(",");
+
+// Convert the array of strings into an array of numbers.
+const numbers = [];
+for (let i = 0; i < stringArray.length; i++) {
+  const str = stringArray[i];
+  const number = parseInt(str);
+  numbers.push(number);
+}
+
+// Peform some calculations on the numbers.
+console.log(numbers);
+console.log(`You have given ${getLength(numbers)} numbers.`);
+console.log(`The sum of your numbers is ${getSum(numbers)}.`);
+console.log(`The mean of your numbers is ${getMean(numbers)}.`);
+console.log(`The smallest of your numbers is ${getMin(numbers)}.`);
+console.log(`The largest of your numbers is ${getMax(numbers)}.`);
+console.log(`The range of your numbers is ${getRange(numbers)}.`);
+console.log(`The even numbers you gave are ${getEvens(numbers)}.`);
+console.log(`The odd numbers you gave are ${getOdds(numbers)}.`);
+
+// === EDIT THE CODE BELOW ===
+// Complete the functions below to make the program work!
 
 /**
- * Takes a F number and returns the number to C
- * @param {string} fahren temperature in degrees F
- * @returns {number} the number of degrees C
+ * @param {number[]} numbers an array of integers
+ * @returns {number} the length of the array
  */
-function convertToCelsius(fahren) {
-  let toCelsius = ((fahren - 32) * 5/9);
-  return toCelsius;
+function getLength(numbers) {
+  return numbers.length;
 }
 
 /**
- * Takes both numbers (F, C) and display a message with
- * both numbers and how that temp makes you feel using
- * this chart
- *
- *   Temp      Feels
- * ---------|----------
- *   < 32   |  "very cold"
- *   < 64   |  "cold"
- *   < 86   |  "warm"
- *   < 100  |  "hot"
- *
- * @param {number} fahren
- * @param {number} celc
+ * @param {number[]} numbers an array of integers
+ * @returns {number} the sum of the numbers
  */
-function createMessage(fahren, celc) {
-
-
-  if ( fahren < 32) {
-    console.log(` your temp in fahrenheit is ${fahren} your temp in celsius is ${celc} this is very cold`);
-  } else if (fahren >= 32 && fahren <= 64 ) {
-    console.log(`your temp in fahrenheit is ${fahren} your temp in celsius is ${celc} this is cold`);
-  } else if ( fahren >= 65 && fahren <= 86) {
-    console.log("your temp in fahrenheit is ${fahren} your temp in celsius is ${celc} this iswarm");
-  } else if (fahren >= 100) {
-    console.log("your temp in fahrenheit is ${fahren} your temp in celsius is ${celc} this is hot");
+function getSum(numbers) {
+  let sum = 0;
+  //create a variable for the sum and initialize it
+  for (let getSum = 0; getSum < numbers.length; getSum++) {
+    sum = sum + getSum;
   }
+  return sum;
 }
 
 /**
- * Takes a number and returns a random integer from 0 to the limit
- * @param {number} limit
- * @returns {number} a number between 0 and the int passed in
+ * @param {number[]} numbers an array of integers
+ * @returns {number} the mean of the numbers
  */
-function rand(limit) {
-  let randomFahrenheit = rand(120);
-  let celsiusEquivalent = toCelsius(randomFahrenheit);
-  return Math.floor(Math.random() * (limit + 1));
+function getMean(numbers) {
+  // TODO
+  //for ( initizialize; condition; iteration)
+  return getSum(numbers) / getLength(numbers);
 }
 
-// -------------------- DO NOT CHANGE THE CODE BELOW ---------------------- //
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number} the smallest of the numbers
+ */
+function getMin(numbers) {
+  // TODO
 
-let fahren = prompt(
-  "enter a number, we will convert that number from fahrenheit to celcius"
-);
-let celc = convertToCelsius(fahren);
-let output = createMessage(fahren, celc);
-console.log(output);
+  return Math.min(...numbers);
+}
 
-fahren = prompt(
-  "Lets try that again. enter a number, we will convert that number from fahrenheit to celcius"
-);
-celc = convertToCelsius(fahren);
-output = createMessage(fahren, celc);
-console.log(output);
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number} the largest of the numbers
+ */
+function getMax(numbers) {
+  // TODO
+  return Math.max(...numbers);
+}
 
-fahren = rand(110);
-celc = convertToCelsius(fahren);
-output = createMessage(fahren, celc);
-console.log(output);
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number} the range of the numbers (max - min)
+ */
+function getRange(numbers) {
+  // TODO
+  return getMax(numbers) - getMin(numbers);
+}
 
-fahren = rand(110);
-celc = convertToCelsius(fahren);
-output = createMessage(fahren, celc);
-console.log(output);
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number[]} the even numbers in the array
+ */
+function getEvens(numbers) {
+  // TODO
+  const evenNumbers = [];
+  for (let index = 0; index < numbers.length; index++) {
+    let num = numbers[index];
+    if (num % 2 === 0) {
+      evenNumbers.push(num);
+    }
+  }
+  return evenNumbers;
+}
+
+/**
+ * @param {number[]} numbers an array of integers
+ * @returns {number[]} the odd numbers in the array
+ */
+function getOdds(numbers) {
+  // TODO
+  const oddNumbers = [];
+  for (let index = 0; index < numbers.length; index++) {
+    let num = numbers[index];
+    if (num % 2 !== 0) {
+      oddNumbers.push(num);
+    }
+  }
+  return oddNumbers;
+}
